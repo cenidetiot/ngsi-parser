@@ -1,0 +1,24 @@
+{
+  "name": "ngsi-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cenidetiot/NGSI.jsLibrary.git"
+  },
+  "keywords": [
+    "ngsi",
+    "fiware",
+    "smartsdk"
+  ],
+  "author": "Daniel Torres & Haidée Onofre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cenidetiot/NGSI.jsLibrary/issues"
+  },
+  "homepage": "https://github.com/cenidetiot/NGSI.jsLibrary#readme"
+}
