@@ -13,7 +13,7 @@ var metadata  = ngsi.parseJSON({
 
 console.log(metadata)
 
-console.log(ngsi.parseEntity('Room', 'Room1',{
+console.log(JSON.stringify(ngsi.parseEntity('Room', 'Room1',{
 	temperature : 50,
 	humidity: {
 		value : 60,
@@ -22,17 +22,14 @@ console.log(ngsi.parseEntity('Room', 'Room1',{
 			telego : "ok"
 		}
 	},
-	modification : { type : "DateTime",value : "Fecha"} 
-}))
+	modification : { 
+		type : "DateTime",
+		value : "Fechasss"
+	},
+	location: {
+	    "value": "41.3763726, 2.186447514",
+	    "type": "geo:point"
+	  }
 
-//console.log(ngsi.detectType("Hola"))
-//console.log(ngsi.detectType(4.5))
-//console.log(ngsi.detectType("geo:line", {  }))
-/*console.log(ngsi.parseEntity({
-	id : 'room1',
-	type : 'room',
-	temperature : 45,
-	humidity: 34,
-	name: 'daniel'
-}))*/
+})))
 
