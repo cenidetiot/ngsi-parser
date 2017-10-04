@@ -7,10 +7,22 @@ Las pruebas
 */
 
 
+var metadata  = ngsi.parseJSON({
+	accuracy : 0.8
+})
+
+console.log(metadata)
 
 console.log(ngsi.parseEntity('Room', 'Room1',{
 	temperature : 50,
-	humidity: 40
+	humidity: {
+		value : 60,
+		metadata : {
+			acurrency : 20,
+			telego : "ok"
+		}
+	},
+	modification : { type : "DateTime",value : "Fecha"} 
 }))
 
 //console.log(ngsi.detectType("Hola"))
