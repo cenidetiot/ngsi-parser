@@ -1,40 +1,21 @@
 var ngsi = require('./lib/NGSI.js');
 
 
-/*
-Las pruebas 
+ngsi.parseEntity('Room', 'Room1',{
+	temperature : 50
+}).then((jsonNgsi) => {
+	console.log(jsonNgsi)
+}).catch((err) => {
+	console.log(err)
+})
 
-*/
-var d = new Date();
-var n = d.toISOString();
-var json = {}
-console.log(d.toString())
-console.log(n)
-console.log(JSON.stringify(ngsi.parseEntity('Room', 'Room1',{
-	temperature : 50,
-	humidity: {
-		value : 60,
-		metadata : {
-			acurrency : 20,
-			telego : "ok"
-		}
-	},
-	modification : { 
-		value : new Date()
-	},
-	location: {
-	    value: [
-	      "40.63913831188419, -8.653321266174316",
-	      "40.63881265804603, -8.653149604797363"
-	    ],
-	    type: "geo:box"
-	  }
-})))
-console.log("PASSS")
-console.log(ngsi.parseJSON({
-	value : d,
+ngsi.parseUpdate({
+	value : new Date(),
 	metadata : {
 		acurrency : 50
 	}
-}))
-
+}).then((update) => {
+	console.log(update)
+}).catch((err) =>{
+	console.log(err)
+})
