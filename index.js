@@ -15,7 +15,7 @@ console.log(ngsi.parseEntity('Room', 'Room1',{
 }))
 
 console.log("EJEMPLO PARA updateEntityAttrs")
-console.log(JSON.stringify(ngsi.parseUpdate({
+console.log(JSON.stringify(ngsi.parseAttrs({
 	temperature : {
 		value : 50,
 		metadata :{
