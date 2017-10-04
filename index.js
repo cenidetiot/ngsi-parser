@@ -15,13 +15,15 @@ console.log(ngsi.parseEntity('Room', 'Room1',{
 }))
 
 console.log("EJEMPLO PARA updateEntityAttrs")
-console.log(ngsi.parseUpdate({
-	value : new Date(),
-	metadata : {
-		acurrency : 50,
-		otracosa: "Todo chido"
+console.log(JSON.stringify(ngsi.parseUpdate({
+	temperature : {
+		value : 50,
+		metadata :{
+			acurrency : 50,
+			otro : 40
+		}
 	}
-}))
+})))
 
 console.log("EJEMPLO PARA updateJSONAttrEntity")
 
