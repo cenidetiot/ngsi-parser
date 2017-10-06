@@ -10,7 +10,9 @@ console.log(ngsi.parseEntity('Room', 'Room1',{
 			uno: 40,
 			dos: 56
 		}
-	}
+	},
+	dateStamp : new Date()
+
 	
 }))
 
