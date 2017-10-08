@@ -13,7 +13,7 @@ ngsi-parser is an npm module for parsing and converting a simple JSON or value t
 	* [Basic Functions](#basic-functions)
 		* [Parse an Entity](#parse-an-entity)
 		* [Parse an Attribute ](#parse-an-attribute)
-		* [Parse a value](#build-and-install)
+		* [Parse a value](#parse-a-value)
 	* [Usage with ocb-sender](#usage-with-ocb-sender)
 * [License](#license)
 
@@ -184,6 +184,22 @@ For more information about [ocb-sender](https://github.com/cenidetiot/OCB.jsLibr
 	.then((result) => console.log(result))
 	.catch((err) => console.log(err))
 ```
+
+#### Add a JSON Attribute to a NGSI entity.
+```js
+	//Convert a Json to Ngsi
+	var attribute = ngsi.parseAttrs({
+		temperature : {
+			value : 50
+		}
+	})
+	// Send to ContextBroker 
+	cb.addJSONAttributeToEntity('Room1', attribute)
+	.then((result) => console.log(result))
+	.catch((err) => console.log(err))
+```
+
+
 #### Update the JSON Object of an atttribute of the entity
 ```js
 	//Convert a Json to Ngsi
