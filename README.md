@@ -75,7 +75,7 @@ Output
 			"value":50,
 			"type":"Number",
 			"metadata":{
-				"frecuency"{
+				"frecuency":{
 					"value":40,
 					"type":"Number"
 				},
