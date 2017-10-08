@@ -171,7 +171,7 @@ For more information about [ocb-sender](https://github.com/cenidetiot/OCB.jsLibr
 	.catch((err) => console.log(err))
 ```
 
-#### Update all the object attributes of a entity
+#### Update all the object attributes of an entity
 ```js
 	//Convert a Json to Ngsi
 	var attribute = ngsi.parseAttrs({
@@ -184,7 +184,7 @@ For more information about [ocb-sender](https://github.com/cenidetiot/OCB.jsLibr
 	.then((result) => console.log(result))
 	.catch((err) => console.log(err))
 ```
-#### Update the JSON Object of a atttribute of the entity
+#### Update the JSON Object of an atttribute of the entity
 ```js
 	//Convert a Json to Ngsi
 	var value = ngsi.parseValue(50)
