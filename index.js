@@ -1,9 +1,10 @@
 var ngsi = require('./lib/NGSI.js');
 
+console.log("*************************parserEntity**************************************\n")
 
-
-console.log("EJEMPLO ENTITY")
-console.log(JSON.stringify(ngsi.parseEntity('Room', 'Room1',{
+console.log(JSON.stringify(ngsi.parseEntity({
+		id : "Room",
+		type : "Room1",
 		temperature : {
 			value : 50 ,
 			metadata : {
@@ -11,10 +12,16 @@ console.log(JSON.stringify(ngsi.parseEntity('Room', 'Room1',{
 				scale: 'Celsious'
 			}
 		},
-		dateStamp : new Date()
+		dateStamp : new Date,
+		ajson : {
+			type : "StructuredValue",
+			value : {
+				jsonvalue : 34
+			}
+		}		
 	})))
 
-console.log("EJEMPLO PARA updateEntityAttrs")
+console.log("****************  parseAttrs Example ***********************************\n")
 console.log(JSON.stringify(ngsi.parseAttrs({
 	temperature : {
 		value : 50,
@@ -25,11 +32,7 @@ console.log(JSON.stringify(ngsi.parseAttrs({
 	}
 })))
 
-console.log("EJEMPLO PARA updateJSONAttrEntity")
+console.log("*******************parseValue Example ********************\n")
 
-console.log(ngsi.parseValue(50))
+console.log(ngsi.parseValue(50.5))
 
-
-
-
-//console.log(ngsi.parseValue("text"))
