@@ -1,6 +1,6 @@
 {
   "name": "ngsi-parser",
-  "version": "1.2.3",
+  "version": "1.3.3",
   "description": "",
   "main": "./lib/NGSI.js",
   "scripts": {

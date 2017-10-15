@@ -53,7 +53,9 @@ ngsi-parser is an npm module for parsing and converting a simple JSON or value t
 #### Parse an Entity
 
 ```js
-	var entity = ngsi.parseEntity('Room', 'Room1',{
+	var entity = ngsi.parseEntity({
+		id :'Room1',
+		type:'Room',
 		temperature : {
 			value : 50 ,
 			metadata : {
