@@ -16,7 +16,11 @@ console.log(ngsi.parseEntity({
 		json : {
 			ok : 40
 		},*/
-		location : [ [0,1], [2,3]]
+		location : {
+			value :[ 0, 0],
+			type: "geo:point"
+		}
+
 	}))
 
 console.log("****************  parseAttrs Example ***********************************\n")
