@@ -2,22 +2,38 @@ Welcome to NGSI-Parser!
 ===================
 
 
-ngsi-parser is an npm module for parsing and converting a simple JSON or value to an NSGI-compliant object
+ngsi-parser is a npm module for parsing and converting a simple JSON or value to a NSGI-compliant object
 
 ----------
 
-
+* [Data type suported](#usage)
 * [How to Install](#how-to-install)
 * [Usage](#usage)
 	* [Import](#import)
-	* [Basic Functions](#basic-functions)
+	* [Entities Functions](#entities-functions)
 		* [Parse an Entity](#parse-an-entity)
 		* [Parse an Attribute ](#parse-an-attribute)
 		* [Parse a value](#parse-a-value)
+	* [Special Consults](#special-consults)
+		* [Geospatial Consults](#parse-a-value)
+		* [Dinamic Query Consult](#parse-a-value)
+	* [Subscriptions Functions](#basic-functions)
 	* [Usage with ocb-sender](#usage-with-ocb-sender)
 * [License](#license)
 
-### How to Install
+## Data types suported
+
+If value is a **string**, then type **Text** is used
+If value is a **number**, then type **Number** is used.
+
+If value is a **boolean**, then type **Boolean** is used.
+If value is **Date**, then **DateTime** is used.
+If value is an **object** or **array**, then **StructuredValue** is used.
+If value is **null**, then **None** is used.
+
+
+
+## How to Install
 
 
     npm install ngsi-parser 
@@ -27,8 +43,8 @@ ngsi-parser is an npm module for parsing and converting a simple JSON or value t
 	 yarn add ngsi-parser
 
 
-----------
-### Import
+
+## Import
 
 #### ES5 
 
@@ -45,9 +61,7 @@ ngsi-parser is an npm module for parsing and converting a simple JSON or value t
 
 	
 
-
-
-### Basic Functions
+## Entities Functions
 
 
 #### Parse an Entity
@@ -149,8 +163,31 @@ Output
 	 }
 
 ```
+## Special Consults
 
-### Usage with ocb-sender
+### Dinamic Query Consult
+```js
+	//Convert a Json to Query
+	let query = ngsi.createQuery({
+	"id":"Device.*",
+	"type":"Device",
+	"options":"keyValues",
+	"dateObserved" : ">=2018-02-20T16:54:03.931-06:00"
+	})
+	console.log(query)
+```
+Output
+
+```text
+	?id=Device.*&Device&
+
+```
+
+## Subscriptions Functions
+
+
+
+## Usage with ocb-sender
 
 For more information about [ocb-sender](https://github.com/cenidetiot/OCB.jsLibrary) see its documentation.
 
