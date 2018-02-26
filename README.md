@@ -16,7 +16,7 @@ ngsi-parser is a npm module for parsing and converting a simple JSON or value to
 		* [Parse a value](#parse-a-value)
 	* [Usage with ocb-sender](#usage-with-ocb-sender)
 	* [Special Consults](#special-consults)
-		* [Geospatial Consults](#geospatial-value)
+		* [Geospatial Consults](#geospatial-consults)
 		* [Dinamic Query Consult](#dinamic-query-consult)
 * [License](#license)
 
