@@ -1,5 +1,6 @@
 var ngsi = require('./lib/NGSI.js');
 
+
 /*
 console.log("*************************parserEntity**************************************\n")
 
@@ -23,7 +24,8 @@ console.log(ngsi.parseEntity({
 		}
 
 	}))
-
+*/
+/*
 console.log("****************  parseAttrs Example ***********************************\n")
 console.log(ngsi.parseAttrs({
 	temperature : { 
@@ -39,8 +41,8 @@ console.log("*******************parseValue Example ********************\n")
 
 console.log(ngsi.parseValue({ ok : 20}))
 
-*/
-/*let coords = [
+
+let coords = [
 	[18.876992,-99.220316,],
 	[18.876789,-99.219189,],
 	[18.876545,-99.219243,],
@@ -64,143 +66,16 @@ let query = ngsi.createQuery({
 console.log(query)
 */
 
+var AlertModel = require('./ModelsExamples/AlertModel1.json')
 
-var AlertScheema = {  //Schema de prueba 
-	 "allOf": [
-	  {
-			"properties": {
-	//------------------------------------------
-				"id": {
-						"type": "string"
-				},
-				"location":{
-					"type" : "object"
-				},
-	//-------------------------------------------
-				"description": {
-					"type": "string"
-				},
-				"dateObserved": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"validFrom": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"validTo": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"severity": {
-					"type": "string",
-					"enum": [
-						"informational",
-						"low",
-						"medium",
-						"high",
-						"critical"
-					]
-				},
-				"category": {
-					"type": "string",
-					"enum": [
-						"traffic",
-						"weather",
-						"environment",
-						"health",
-						"security"
-					]
-				},
-				"subCategory": {
-					"type": "string",
-					"enum": [
-						"trafficJam",
-						"carAccident",
-						"carWrongDirection",
-						"carStopped",
-						"pothole",
-						"roadClosed",
-						"roadWorks",
-						"hazardOnRoad",
-						"injuredBiker",
-						"rainfall",
-						"highTemperature",
-						"lowTemperature",
-						"heatWave",
-						"ice",
-						"snow",
-						"wind",
-						"fog",
-						"flood",
-						"tsunami",
-						"tornado",
-						"tropicalCyclone",
-						"hurricane",
-						"asthmaAttack",
-						"bumpedPatient",
-						"fallenPatient",
-						"heartAttack",
-						"suspiciousAction",
-						"robbery",
-						"assault"
-					]
-				},
-				"alertSource": {
-					"oneOf": [
-						{
-						"type": "string",
-						"format": "uri"
-						},
-					{
-						"type": "number",
-						"format": "uri"
-					}
-				]
-				},
-				"data": {
-					"type": "object"
-				},
-				"type": {
-					"type": "string",
-					"enum": [
-						"Alert"
-					],
-					"description": "NGSI Entity type"
-				}
-			}
-	  }
-	],
+var AlertModel1 = require('./ModelsExamples/AlertModel2.json')
 
-	"oneOf": [
-	  {
-		"required": [
-		  "id",
-		  "type",
-		  "location",
-		  "alertSource",
-		  "category",
-		  "dateObserved"
-		]
-	  },
-	  {
-		"required": [
-		  "id",
-		  "type",
-		  "address",
-		  "alertSource",
-		  "category",
-		  "dateObserved"
-		]
-	  }
-	]
-}
+// "pattern": "^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$",
 
-
-var alert = { //Entidad de prueba
+var alert = { 
 	id: "Alert:Device_Smartphone_7a85d9df7209b8bc:1519086635021",
 	type: "Alert",
-	alertSource: 40,
+	alertSource: 22,
 	category: "traffic",
 	dateObserved: "2018-02-20T00:30:35.00Z",
 	description: "prueba dani",
@@ -214,65 +89,13 @@ var alert = { //Entidad de prueba
 	validTo: "2018-02-20T00:30:35.00Z",
 }
 
-verifySchema(AlertScheema, alert) 
 
-function checkValues( values, attrVal) {
-	var matchValue = false;
-	values.map((val) => {
-		if(val === attrVal){
-			matchValue = true;
-		}
-	})
-	return matchValue;
-}
 
-function verifyAttr (schemaAttr , attr ) {
-	var correctType = false ; 
-	var error = null ;
-	
-	if (schemaAttr.type === typeof attr){
-		correctType = true;
-		if(schemaAttr["enum"] !== undefined){
-			if(!checkValues(schemaAttr["enum"], attr)){
-				console.error("Dato no encontrado en la lista", attr)
-			}	
-		}
-	}else {
-		if(schemaAttr["oneOf"] !== undefined){
+//ngsi.verifyModel(AlertModel1, alert) 
 
-			schemaAttr["oneOf"].map((one) => {
-				if(one.type === typeof attr){
-					correctType = true
-				}
-				if(schemaAttr["enum"] !== undefined){
-					if(!checkValues(schemaAttr["enum"], attr)){
-						console.error("Dato no encontrado en la lista", attr)
-					}	
-				}
-			})
 
-		}else{
-			
-			correctType = false ; 
-		}
-	}	
-	return correctType ;
-}
 
-function verifySchema (Schema, Entity) {
-	for (attr in Entity){
-		let exist = false;
-		
-		if (AlertScheema.allOf[0].properties[attr] !== undefined){ 
-			
-			var verification = verifyAttr(AlertScheema.allOf[0].properties[attr], Entity[attr])
-
-		}else{
-			console.error("Atributo no encontrado en el schema", attr)
-		}
-	}	
-}
-
+/**/
 
 
 
