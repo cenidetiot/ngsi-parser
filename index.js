@@ -1,83 +1,21 @@
 var ngsi = require('./lib/NGSI.js');
+var AlertModel = require('./ModelsExamples/AlertModel.json')
+var AirQualityObserved = require('./ModelsExamples/AirQualityObserved.json')
+
+// Agregar definiciones oficiales
+AlertModel["allOf"].push(ngsi.GSMA)
+AlertModel["allOf"].push(ngsi.Location)
+//AlertModel["allOf"].push(ngsi.PhysicalObject)
 
 
-/*
-console.log("*************************parserEntity**************************************\n")
-
-console.log(ngsi.parseEntity({
-		id : "Room",
-		type : "Room1",
-		temperature : {
-			value : 50 ,
-			metadata : {
-				frecuency: 40,
-				scale: 'Celsious'
-			}
-		},
-		dateStamp : new Date(),
-		json : {
-			ok : 40
-		},
-		location : {
-			value :[ 0, 0],
-			type: "geo:point"
-		}
-
-	}))
-*/
-/*
-console.log("****************  parseAttrs Example ***********************************\n")
-console.log(ngsi.parseAttrs({
-	temperature : { 
-		value : 50,
-		metadata :{
-			frecuency : 50, 
-			scale: 'Fahrenheit'   
-		} 
-	}
-})) 
-
-console.log("*******************parseValue Example ********************\n")
-
-console.log(ngsi.parseValue({ ok : 20}))
-
-
-let coords = [
-	[18.876992,-99.220316,],
-	[18.876789,-99.219189,],
-	[18.876545,-99.219243,],
-	[18.875611,-99.21972,],
-	[18.875708,-99.219897,],
-	[18.875809,-99.22008,],
-	[18.875906,-99.220171,],
-	[18.876073,-99.220187,],
-	[18.876342,-99.220171,],
-	[18.876596,-99.220262,],
-	[18.876743,-99.22031,],
-	[18.876992,-99.220316,],
-	]
-
-let query = ngsi.createQuery({
-	"id":"Alert:Device_Smartphone_.*",
-	"type":"Alert",
-	"options":"keyValues",
-	"dateObserved" : ">=2018-02-20T16:54:03.931-06:00"
-	})
-console.log(query)
-*/
-
-var AlertModel = require('./ModelsExamples/AlertModel1.json')
-
-var AlertModel1 = require('./ModelsExamples/AlertModel2.json')
-
-// "pattern": "^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$",
-
+//Agregar un solo atributo de una definición oficial
+AlertModel["allOf"][0]["properties"]["alertSource"]["oneOf"].push(ngsi.GSMA.properties.id)
 var alert = { 
 	id: "Alert:Device_Smartphone_7a85d9df7209b8bc:1519086635021",
 	type: "Alert",
-	alertSource: 22,
+	alertSource: "22",
 	category: "traffic",
-	dateObserved: "2018-02-20T00:30:35.00Z",
+	dateObserved: new Date(),
 	description: "prueba dani",
 	location: {
 		type : "geo:point",
@@ -85,17 +23,68 @@ var alert = {
 	},
 	severity: "medium",
 	subCategory: "carAccident",
-	validFrom: "2018-02-20T00:30:35.00Z",
-	validTo: "2018-02-20T00:30:35.00Z",
+	validFrom: new Date(),
+	validTo: new Date(),
+	dateCreated : new Date()
 }
 
+if (ngsi.verifyModel(AlertModel, alert)){
+	console.log("Entidad Alert cumple con el modelo")
+	//console.log(ngsi.parseEntity(alert))
+}
+
+let AirQualityObservedEntity = {
+	"id": "Madrid-AmbientObserved-28079004-2016-03-15T11:00:00",
+	"type": "AirQualityObserved",
+	"address": {
+	  "addressCountry": "ES",
+	  "addressLocality": "Madrid",
+	  "streetAddress": "Plaza de España"
+	},
+	"dateObserved": "2016-03-15T11:00:00/2016-03-15T12:00:00",
+	"location": {
+	  "type": "Point",
+	  "coordinates": [-3.712247222222222, 40.423852777777775]
+	},
+	"source": "http://datos.madrid.es",
+	//"precipitation": 0,
+	//"relativeHumidity": 0.54,
+	//"temperature": 12.2,
+	//"windDirection": 186,
+	//"windSpeed": 0.64,
+	"airQualityLevel": "moderate",
+	"airQualityIndex": 65,
+	"reliability": 0.7,
+	//"CO": 500,
+	//"NO": 45,
+	//"NO2": 69,
+	//"NOx": 139,
+	//"SO2": 11,
+	//"CO_Level": "moderate",
+	"refPointOfInterest": "28079004-Pza.deEspanya"
+  }
 
 
-//ngsi.verifyModel(AlertModel1, alert) 
+AirQualityObserved["allOf"].push(ngsi.GSMA)
+AirQualityObserved["allOf"].push(ngsi.Location) 
+
+AirQualityObserved["allOf"][0]["properties"]["refDevice"] = ngsi.GSMA.properties.id
+AirQualityObserved["allOf"][0]["properties"]["refPointOfInterest"] = ngsi.GSMA.properties.id
+AirQualityObserved["allOf"][0]["properties"]["refWeatherObserved"] = ngsi.GSMA.properties.id
+
+
+ngsi.verifyModel(AirQualityObserved,AirQualityObservedEntity)
 
 
 
-/**/
+
+
+//console.log(ngsi.verifyModel(AlertModel1, alert))
+
+
+
+
+
 
 
 
