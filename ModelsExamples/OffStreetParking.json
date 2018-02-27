@@ -253,31 +253,31 @@
 				"uniqueItems": true
 			},
 			"highestFloor": {
-				"type": "integer"
+				"type": "number"
 			},
 			"lowestFloor": {
-				"type": "integer"
+				"type": "number"
 			},
 			"maximumAllowedDuration": {
 				"type": "string"
 			},
 			"totalSpotNumber": {
-				"type": "integer",
+				"type": "number",
 				"minimum": 1
 			},
 			"availableSpotNumber": {
-				"type": "integer",
+				"type": "number",
 				"minimum": 0
 			},
 			"extraSpotNumber": {
-				"type": "integer",
+				"type": "number",
 				"minimum": 0
 			},
 			"openingHours": {
 				"type": "string"
 			},
 			"firstAvailableFloor": {
-				"type": "integer"
+				"type": "number"
 			},
 			"specialLocation": {
 				"type": "array",
@@ -374,18 +374,6 @@
 				"type": "number",
 				"minimum": 0,
 				"exclusiveMinimum": true
-			},
-			"refParkingAccess": {
-				"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
-			},
-			"refParkingGroup": {
-				"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
-			},
-			"refParkingSpot": {
-				"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
-			},
-			"aggregateRating": {
-				"type": "object"
 			}
 		}
 	}],

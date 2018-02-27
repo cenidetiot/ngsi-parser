@@ -1,6 +1,6 @@
 var ngsi = require('./lib/NGSI.js');
 var AlertModel = require('./ModelsExamples/AlertModel.json')
-var AirQualityObserved = require('./ModelsExamples/AirQualityObserved.json')
+var OffStreetParking = require('./ModelsExamples/OffStreetParking.json')
 
 // Agregar definiciones oficiales
 AlertModel["allOf"].push(ngsi.GSMA)
@@ -33,47 +33,43 @@ if (ngsi.verifyModel(AlertModel, alert)){
 	//console.log(ngsi.parseEntity(alert))
 }
 
-let AirQualityObservedEntity = {
-	"id": "Madrid-AmbientObserved-28079004-2016-03-15T11:00:00",
-	"type": "AirQualityObserved",
-	"address": {
-	  "addressCountry": "ES",
-	  "addressLocality": "Madrid",
-	  "streetAddress": "Plaza de España"
-	},
-	"dateObserved": "2016-03-15T11:00:00/2016-03-15T12:00:00",
+
+
+
+OffStreetParking["allOf"].push(ngsi.GSMA)
+OffStreetParking["allOf"].push(ngsi.Location) 
+
+OffStreetParking["allOf"][0]["properties"]["refParkingAccess"] = ngsi.GSMA.properties.id
+OffStreetParking["allOf"][0]["properties"]["refParkingGroup"] = ngsi.GSMA.properties.id
+OffStreetParking["allOf"][0]["properties"]["refParkingSpot"] = ngsi.GSMA.properties.id
+
+let OffStreetParkingEntity = {
+	"id": "porto-ParkingLot-23889",
+	"type": "OffStreetParking",
+	"name": "Parque de estacionamento Trindade",
+	"category": ["underground", "public", "feeCharged", "mediumTerm", "barrierAccess"],
+	"chargeType": ["temporaryPrice"],
+	"requiredPermit": [],
+	"layout": ["multiLevel"],
+	//"maximumParkingDuration": "PT8H",
 	"location": {
-	  "type": "Point",
-	  "coordinates": [-3.712247222222222, 40.423852777777775]
+	  "coordinates": [-8.60961198807, 41.150691773],
+	  "type": "Point"
 	},
-	"source": "http://datos.madrid.es",
-	//"precipitation": 0,
-	//"relativeHumidity": 0.54,
-	//"temperature": 12.2,
-	//"windDirection": 186,
-	//"windSpeed": 0.64,
-	"airQualityLevel": "moderate",
-	"airQualityIndex": 65,
-	"reliability": 0.7,
-	//"CO": 500,
-	//"NO": 45,
-	//"NO2": 69,
-	//"NOx": 139,
-	//"SO2": 11,
-	//"CO_Level": "moderate",
-	"refPointOfInterest": "28079004-Pza.deEspanya"
-  }
+	"allowedVehicleType": ["car"],
+	"totalSpotNumber": 414,
+	"availableSpotNumber": 132,
+	"address": {
+	  "streetAddress": "Rua de Fernandes Tomás",
+	  "addressLocality": "Porto",
+	  "addressCountry": "Portugal"
+	},
+	"description": "Municipal car park located near the Trindade metro station and the Town Hall",
+	"dateModified": "2016-06-02T09:25:55.00Z"
+}
 
 
-AirQualityObserved["allOf"].push(ngsi.GSMA)
-AirQualityObserved["allOf"].push(ngsi.Location) 
-
-AirQualityObserved["allOf"][0]["properties"]["refDevice"] = ngsi.GSMA.properties.id
-AirQualityObserved["allOf"][0]["properties"]["refPointOfInterest"] = ngsi.GSMA.properties.id
-AirQualityObserved["allOf"][0]["properties"]["refWeatherObserved"] = ngsi.GSMA.properties.id
-
-
-ngsi.verifyModel(AirQualityObserved,AirQualityObservedEntity)
+ngsi.verifyModel(OffStreetParking,OffStreetParkingEntity)
 
 
 
