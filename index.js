@@ -13,7 +13,7 @@ AlertModel["allOf"][0]["properties"]["alertSource"]["oneOf"].push(ngsi.GSMA.prop
 var alert = { 
 	id: "Alert:Device_Smartphone_7a85d9df7209b8bc:1519086635021",
 	type: "Alert",
-	alertSource: "22",
+	alertSource: "2(2",
 	category: "traffic",
 	dateObserved: new Date(),
 	description: "prueba dani",
@@ -28,13 +28,10 @@ var alert = {
 	dateCreated : new Date()
 }
 
-if (ngsi.verifyModel(AlertModel, alert)){
+/*if (ngsi.verifyModel(AlertModel, alert)){
 	console.log("Entidad Alert cumple con el modelo")
 	//console.log(ngsi.parseEntity(alert))
-}
-
-
-
+}*/
 
 OffStreetParking["allOf"].push(ngsi.GSMA)
 OffStreetParking["allOf"].push(ngsi.Location) 
@@ -67,15 +64,10 @@ let OffStreetParkingEntity = {
 	"description": "Municipal car park located near the Trindade metro station and the Town Hall",
 	"dateModified": "2016-06-02T09:25:55.00Z"
 }
-
-
-ngsi.verifyModel(OffStreetParking,OffStreetParkingEntity)
-
-
-
-
-
-//console.log(ngsi.verifyModel(AlertModel1, alert))
+//ngsi.verifyModel(OffStreetParking,OffStreetParkingEntity)
+if(ngsi.verifyModel(require('./AlertSchema.json'), alert)){
+	console.log("EL modelo cumple ")
+}
 
 
 
