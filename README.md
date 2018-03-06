@@ -243,6 +243,7 @@ Output
 ```text
 	?id=Device.*&Device&type=Device&options=keyValues&q=dateObserved>=2018-02-20T16:54:03.931-06:00
 ```
+Usage with OCB-sender
 
 ```js
 	//Send requests to ContextBroker
@@ -251,25 +252,7 @@ Output
 	.catch((err) => console.log(err))
 ```
 
-### Geospatial Consults
 
-```js            
-
-    ocb.queryEntitiesOnArea(polygonCoords,idPattern, entityType, keyValues)        
-    .then((result) => console.log(result))
-	.catch((err) => console.log(err))	
-```
-Example 
-
-```js              
-    var polygonCoords = [[0,1], [1,2], [3,4], [2,1], [0,1]];      
-    var idPattern = "Alert.*";
-    var entityType = "Alert";
-    var keyValues = true
-    ocb.queryEntitiesOnArea(polygonCoords,idPattern, entityType, keyValues)        
-    .then((result) => console.log(result))
-	.catch((err) => console.log(err))	
-```
 
 #### License 
 
