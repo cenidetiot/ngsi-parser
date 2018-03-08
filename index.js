@@ -13,7 +13,7 @@ AlertModel["allOf"][0]["properties"]["alertSource"]["oneOf"].push(ngsi.GSMA.prop
 var alert = { 
 	id: "Alert:Device_Smartphone_7a85d9df7209b8bc:1519086635021",
 	type: "Alert",
-	alertSource: "2(2",
+	alertSource: "22",
 	category: "traffic",
 	dateObserved: new Date(),
 	description: "prueba dani",
