@@ -248,7 +248,7 @@ Usage with OCB-sender
 
 ```js
 	//Send requests to ContextBroker
-	cb.getWithQuery(ngsiQuery)
+	cb.getWithQuery(query)
     .then((result) => console.log(result))
 	.catch((err) => console.log(err))
 ```
