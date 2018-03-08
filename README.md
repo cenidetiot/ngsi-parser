@@ -166,7 +166,9 @@ For more information about [ocb-sender](https://github.com/cenidetiot/OCB.jsLibr
 #### Create an Entity in the ContextBroker
 ```js
 	//Convert a Json to Ngsi
-	var entity = ngsi.parseEntity('Room', 'Room1',{
+	var entity = ngsi.parseEntity({
+		id :'Room1',
+		type:'Room',
 		temperature : {
 			value : 50 ,
 			metadata : {
