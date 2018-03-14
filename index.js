@@ -36,35 +36,7 @@ var alert = {
 OffStreetParking["allOf"].push(ngsi.GSMA)
 OffStreetParking["allOf"].push(ngsi.Location) 
 
-OffStreetParking["allOf"][0]["properties"]["refParkingAccess"] = ngsi.GSMA.properties.id
-OffStreetParking["allOf"][0]["properties"]["refParkingGroup"] = ngsi.GSMA.properties.id
-OffStreetParking["allOf"][0]["properties"]["refParkingSpot"] = ngsi.GSMA.properties.id
 
-let OffStreetParkingEntity = {
-	"id": "porto-ParkingLot-23889",
-	"type": "OffStreetParking",
-	"name": "Parque de estacionamento Trindade",
-	"category": ["underground", "public", "feeCharged", "mediumTerm", "barrierAccess"],
-	"chargeType": ["temporaryPrice"],
-	"requiredPermit": [],
-	"layout": ["multiLevel"],
-	//"maximumParkingDuration": "PT8H",
-	"location": {
-	  "coordinates": [-8.60961198807, 41.150691773],
-	  "type": "Point"
-	},
-	"allowedVehicleType": ["car"],
-	"totalSpotNumber": 414,
-	"availableSpotNumber": 132,
-	"address": {
-	  "streetAddress": "Rua de Fernandes Tomás",
-	  "addressLocality": "Porto",
-	  "addressCountry": "Portugal"
-	},
-	"description": "Municipal car park located near the Trindade metro station and the Town Hall",
-	"dateModified": "2016-06-02T09:25:55.00Z"
-}
-//ngsi.verifyModel(OffStreetParking,OffStreetParkingEntity)
 if(ngsi.verifyModel(require('./AlertSchema.json'), alert)){
 	console.log("EL modelo cumple ")
 }
