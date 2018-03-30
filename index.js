@@ -7,7 +7,6 @@ AlertModel["allOf"].push(ngsi.GSMA)
 AlertModel["allOf"].push(ngsi.Location)
 //AlertModel["allOf"].push(ngsi.PhysicalObject)
 
-
 //Agregar un solo atributo de una definición oficial
 AlertModel["allOf"][0]["properties"]["alertSource"]["oneOf"].push(ngsi.GSMA.properties.id)
 var alert = { 
@@ -33,13 +32,15 @@ var alert = {
 	//console.log(ngsi.parseEntity(alert))
 }*/
 
-OffStreetParking["allOf"].push(ngsi.GSMA)
-OffStreetParking["allOf"].push(ngsi.Location) 
+let err = ngsi.verifyModel(require('./AlertSchema.json'), alert)
+
+/*if (err.length > 0){
+	console.log("La entidad no cumple con el squema del modelo")
+}else {
+	console.log("La entidad  cumple con el esquema del modelo")
+}*/
 
 
-if(ngsi.verifyModel(require('./AlertSchema.json'), alert)){
-	console.log("EL modelo cumple ")
-}
 
 
 
