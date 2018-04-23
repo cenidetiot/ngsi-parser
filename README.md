@@ -17,6 +17,8 @@ ngsi-parser is a npm module for parsing and converting a simple JSON or value to
 	* [Usage with ocb-sender](#usage-with-ocb-sender)
 	* [Special Consults](#special-consults)
 		* [Dinamic Query Consult](#dinamic-query-consult)
+	* [Model JSON Schema Analizer](#model-json-schema-analizer)
+	
 * [License](#license)
 
 ## Data types suported
@@ -252,6 +254,9 @@ Usage with OCB-sender
     .then((result) => console.log(result))
 	.catch((err) => console.log(err))
 ```
+
+## Model JSON Schema Analizer
+
 
 
 
