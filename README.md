@@ -17,7 +17,7 @@ ngsi-parser is a npm module for parsing and converting a simple JSON or value to
 	* [Usage with ocb-sender](#usage-with-ocb-sender)
 	* [Special Consults](#special-consults)
 		* [Dinamic Query Consult](#dinamic-query-consult)
-	* [Model JSON Schema Analizer](#model-json-schema-analizer)
+	* [Data Model JSON Schema Analizer](#data-model-json-schema-analizer)
 	
 * [License](#license)
 
@@ -255,7 +255,101 @@ Usage with OCB-sender
 	.catch((err) => console.log(err))
 ```
 
-## Model JSON Schema Analizer
+## Data Model JSON Schema Analizer
+
+ngsi-parser helps you to manage your Data Models like used in Fiware, ngsi-parser can analize if the entity complies with the specified model and identify its errors, to do it you need the JSON Schema of this Data Model provided or you can build some.
+
+You can know about JSON Schemas in  [JSON Schema](http://json-schema.org/).
+
+### Importing your JSON Schema
+
+You  can import your JSON schema importing a JSON from a file or from a repository using the help of ocb-sender.
+
+#### Importing From a  JSON File
+```javascript
+	var ngsi = require('ngsi-parser');
+	var mySchema = require('mySchema.json');
+	ngsi.setModel({
+		mySchema : mySchema
+	});
+```
+#### Importing From a remote repository
+```javascript
+	var ngsi = require('ngsi-parser');
+	ngsi.setModel({
+		myRemoteSchema : 'https://yourdatamodels.com/myRemote'
+	});
+```
+#### Importing from various sources 
+
+```javascript
+	var ngsi = require('ngsi-parser');
+	var mySchema = require('mySchema.json');
+	ngsi.setModel({
+		mySchema : mySchema,
+		myRemoteSchema : 'https://yourdatamodels.com/myRemote',
+		AlertModel : 'https://raw.githubusercontent.com/smartsdk/dataModels/master/Alert/schema.json',
+		anotherModel : require('anotherSchema.json')
+	});
+```
+
+
+#### Using your Data Models Schemas 
+To use the schemas imported from a JSON file only you need to specify the name with which you entered it to ngsi-parser and it will return you one array with the errors found.
+```javascript
+	var ngsi = require('ngsi-parser');
+	var mySchema = require('mySchema.json');
+	ngsi.setModel({
+		mySchema : mySchema
+	});
+	var entity = { 
+		id :'Room1',
+		type:'Room',
+		temperature : 50, 
+		dateStamp :  new  Date()  
+	};
+	let errors  = ngsi.verifyModel('mySchema', entity);
+	if (errors.length === 0 ){
+		console.log("The entity it's OK")
+	}else {
+		errors.map(console.log)
+	}
+```
+To use Schemas from a remote repository is necesary download it, is because you need use ocb-sender, and in this case the method ngsi.verifyModel() becomes to a promise.
+```javascript
+	var ngsi = require('ngsi-parser');
+	var ocb = require('ocb-sender');
+	ngsi.setModel({
+		myRemoteSchema : 'https://yourdatamodels.com/myRemote',
+	});
+	var entity = { 
+		id :'Room1',
+		type:'Room',
+		temperature : 50, 
+		dateStamp :  new  Date()  
+	};
+	ngsi.verifyModel('myRemoteSchema', entity, ocb)
+	.then((errors) => { 
+		if (errors.length === 0 ){
+			console.log("The entity it's OK")
+		}else {
+			errors.map(console.log)
+		}
+	})
+```
+#### Use without storing the JSON schema 
+```javascript
+	var ngsi = require('ngsi-parser');
+	var ocb = require('ocb-sender');
+	ngsi.verifyModel('https://yourdatamodels.com/myRemote', entity ,cb)
+	.then((errors) => { 
+		if (errors.length === 0 ){
+			console.log("The entity it's OK")
+		}else {
+			errors.map(console.log)
+		}
+	})
+```
 
 
 
