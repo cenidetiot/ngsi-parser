@@ -23,12 +23,12 @@ ngsi-parser is a npm module for parsing and converting a simple JSON or value to
 
 ## Data types suported
 
-If value is a **string**, then type **Text** is used.
-If value is a **number**, then type **Number** is used.
-If value is a **boolean**, then type **Boolean** is used.
-If value is **Date**, then **DateTime** is used.
-If value is an **object** or **array**, then **StructuredValue** is used.
-If value is **null**, then **None** is used.
+If value is a **string**, then type **Text** is used. <br>
+If value is a **number**, then type **Number** is used. <br>
+If value is a **boolean**, then type **Boolean** is used.<br>
+If value is **Date**, then **DateTime** is used. <br>
+If value is an **object** or **array**, then **StructuredValue** is used. <br>
+If value is **null**, then **None** is used. <br>
 
 ## How to Install
 
@@ -37,7 +37,7 @@ If value is **null**, then **None** is used.
     
    or
    
-	 yarn add ngsi-parser
+	yarn add ngsi-parser
 
 
 
