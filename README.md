@@ -1,6 +1,6 @@
 # NGSI - parser 
 
-[![https://nodei.co/npm/ngsi-parser.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/ngsi-parser.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/ngsi-parser)S
+[![https://nodei.co/npm/ngsi-parser.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/ngsi-parser.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/ngsi-parser)
 
 ## What is ocb-sender?
 ngsi-parser is a npm module for parsing and converting a simple JSON or value to a NSGI-compliant object
@@ -528,9 +528,6 @@ ngsi.verifyModel('Alert', alertEntity, ocb)
 	}
 })
 ```
-
-
-
 #### License 
 
-MIT &copy; Daniel Torres & Haidée Onofre
+MIT 
