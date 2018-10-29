@@ -23,13 +23,17 @@ ngsi.parseValue("ok")
 // Schema
 
 //Attribute X not found in the model
-//The allOf atribute should be Array
-//The definition atribute should be JSON
-//The model is malformed need allOf or definition properties
-//The model does not comply with the required attribute options
-//The oneOf atribute should be Array
 //The attribute X is required
+
+
+//The allOf atribute should be Array
+//The oneOf attribute should be Array
+
+//The definition attribute should be JSON
+//The model does not comply with the required attribute options
 //The model is malformed need oneOf or required properties
+//The model is malformed need allOf or definition properties
+
 //Actualy the only the refs supported are GSMA, Location and PhysicalObject commons
 
 //Attributes
