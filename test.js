@@ -46,7 +46,7 @@ ngsi.parseValue("ok")
 //Error X not found in the list
 
 
-//======================================Errors in the DATA MODELS SCHEMAS ANALYZER=====================================
+//======================================Types of Errors produced by the DATA MODELS SCHEMAS ANALYZER=====================================
 //ERRORS IN THE JSON SCHEMA PROVIDED 
 
 /* ********************************************* */
