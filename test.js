@@ -45,32 +45,34 @@ ngsi.parseValue("ok")
 //Error the minItems A.length
 //Error X not found in the list
 
-//ERRORS IN THE DEFINITION OF A SCHEMA
+
+//======================================Errors in the DATA MODELS SCHEMAS ANALYZER=====================================
+//ERRORS IN THE JSON SCHEMA PROVIDED 
 
 /* ********************************************* */
 //*The schema is not well-defined, needs the property allOf or definition
 //*The allOf property should be an array
 //*The definition property should be a JSON 
-//*The schema is not well-defined needs the property oneOf or required
+//*The schema is not well-defined, needs the property oneOf or required
 //*The oneOf property should be an array
 //*The schema does not fulfill with the required attribute: options
 //*Currently, the analyzer only supports the common refs of GSMA, Location and PhysicalObject
 
 /* ********************************************** */
 
-// ERRORS IN THE DEFINITION OF A DATA MODEL
+// ERRORS IN YOUR ENTITY DEFINITION 
 
-//*The attribute X is not a official attribute of the data model
-//*The attribute X is required in the model definition 
+//*The attribute X is not an official attribute of the data model X
+//*The attribute X is required in the model definition X
 //*Error in the type of X attribute
 //*Error in the format date of X attribute
 //For attributes type text:
-//*Error: the minLength of X attribute is attribute.minLength
-//*Error: the maxLength of X attribute is attribute.maxLength
+//*Error: the minLength of X attribute must be attribute.minLength
+//*Error: the maxLength of X attribute must be attribute.maxLength
 //For attributes type number:
-//Error: the maximum value of X attribute is attribute.maximum
-//Error: the minimum value of X attribute is attribute.minimum
+//Error: the maximum value of X attribute must be attribute.maximum
+//Error: the minimum value of X attribute must be attribute.minimum
 //For attributes type array:
-//*Error: the minItems of X attribute is attribute.length
+//*Error: the minItems of X attribute must be attribute.length
 //*Error: the attribute X is not in the list of allowed values
 /* ********************************************* */
