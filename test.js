@@ -62,8 +62,8 @@ ngsi.parseValue("ok")
 
 // ERRORS IN YOUR ENTITY DEFINITION 
 
-//*The attribute X is not an official attribute of the data model X
-//*The attribute X is required in the model definition X
+//*The attribute X is not an official attribute of the data model 
+//*The attribute X is required in the model definition 
 //*Error in the type of X attribute
 //*Error in the format date of X attribute
 //For attributes type text:
