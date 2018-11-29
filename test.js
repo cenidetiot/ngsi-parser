@@ -76,3 +76,34 @@ ngsi.parseValue("ok")
 //*Error: the minItems of X attribute must be attribute.length
 //*Error: the attribute X is not in the list of allowed values
 /* ********************************************* */
+/*
+var model = require('./ModelsExamples/AlertModel.json')
+
+ngsi.setModel({
+  Alert : model
+});
+
+var entity  = {
+  id: "Alert:Device_Smartphone_7a85d9df7209b8bc:1519086635021",
+  type: "Alert",
+  alertSource: "Device_Smartphone_7a85d9df7209b8bc",
+  category: "traffic",
+  dateObserved: new  Date(),
+  description: "Car Accident on Cenidet",
+  location: {
+  type : "geo:point",
+      value : "18.81186166666667 ,-98.96342000000001"
+  },
+  severity: "medium",
+  subCategory: "carAccident",
+  validFrom: new  Date(),
+  validTo: new  Date(),
+  dateCreated : new Date()
+}
+
+let errors  = ngsi.verifyModel('Alert', entity);
+if (errors.length === 0 ){
+    console.log("The entity it's OK")
+}else {
+    errors.map((error, index) => console.log(error))
+}*/
